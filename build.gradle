@@ -1,0 +1,80 @@
+plugins {
+	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+	id 'maven-publish'
+}
+
+repositories {
+}
+
+def fullVersion = "${project.version}+fabric-${project.minecraft_version}"
+version = fullVersion
+
+base {
+	archivesName = "bugpedia"
+}
+
+loom {
+	splitEnvironmentSourceSets()
+
+	mods {
+		"bugpedia" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings loom.officialMojangMappings()
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+}
+
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+def prismModsDir = file("/mnt/HDD/Apps/PrismLauncher/data/instances/1.21.11-2/minecraft/mods")
+def jarArchiveDir = file("archive")
+def prismOldJars = fileTree(dir: prismModsDir, include: "bugpedia-*.jar")
+
+tasks.register("archiveJar", Copy) {
+	from(remapJar)
+	into(jarArchiveDir)
+}
+
+tasks.register("cleanPrismMods", Delete) {
+	delete(prismOldJars)
+}
+
+tasks.register("deployPrism", Copy) {
+	dependsOn("remapJar", "archiveJar", "cleanPrismMods")
+	from(remapJar)
+	into(prismModsDir)
+}
+
+publishing {	publications {
+		create("mavenJava", MavenPublication) {
+			from components.java
+		}
+	}
+
+	repositories {
+	}
+}

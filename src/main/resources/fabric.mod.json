@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "bugpedia",
+	"version": "${version}",
+	"name": "Bugpedia",
+	"description": "In-game encyclopedia of known Minecraft bugs.",
+	"authors": [
+		"teddz"
+	],
+	"contact": {
+		"homepage": "https://github.com/frteddz/Bugpedia",
+		"sources": "https://github.com/frteddz/Bugpedia"
+	},
+	"license": "Bugpedia License",
+	"icon": "assets/bugpedia/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.frteddz.bugpedia.client.BugpediaClient"
+		]
+	},
+	"mixins": [
+		{
+			"config": "bugpedia.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~1.21.11",
+		"java": ">=21"
+	}
+}
