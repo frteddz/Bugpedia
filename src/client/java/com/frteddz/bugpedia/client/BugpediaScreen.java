@@ -1,7 +1,6 @@
 package com.frteddz.bugpedia.client;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.SharedConstants;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -72,16 +71,12 @@ public class BugpediaScreen extends Screen {
 		this.addRenderableWidget(this.refreshButton);
 		this.addRenderableWidget(this.clearButton);
 
-		String running = SharedConstants.getCurrentVersion().name();
 		List<String> versions = new ArrayList<>();
 		versions.add("Any version");
-		versions.add(running);
 		for (String version : List.of("26.3", "26.2", "26.1.2", "26.1.1", "26.1",
 				"1.21.11", "1.21.10", "1.21.9", "1.21.8", "1.21.7", "1.21.6",
 				"1.21.5", "1.21.4", "1.21.3", "1.21.2", "1.21.1", "1.21")) {
-			if (!version.equals(running)) {
-				versions.add(version);
-			}
+			versions.add(version);
 		}
 		this.confirmationMenu = new DropdownMenu("Confirmation",
 			List.of("Any confirmation", "Unconfirmed", "Plausible", "Community Consensus", "Confirmed"), 0, false);

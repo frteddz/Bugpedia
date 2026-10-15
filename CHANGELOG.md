@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.7.6+fabric-1.21.11 (2026-10-15)
+
+Changed
+- Made the version list fully static, no longer reads the running version
+
+## v0.7.5+fabric-1.21.11 (2026-10-15)
+
+Changed
+- Widened supported versions to 1.21.9 through 1.21.11 in one jar
+
 ## v0.7.4+fabric-1.21.11 (2026-10-15)
 
 Fixed
