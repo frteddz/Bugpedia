@@ -2,13 +2,14 @@
 
 In-game encyclopedia of known Minecraft bugs.
 
-Pick your game version and loader, and Bugpedia shows you which known bugs affect you, with workarounds and the version that fixes them. No more alt-tabbing to check if something is a bug or just you.
+Open Bug-o-pedia from the title or pause menu and see which known bugs affect you, with workarounds, fix versions, and links to the reports. No more alt-tabbing to check if something is a bug or just you.
 
 ## Features
-- Filter by version, loader, and category
-- Search
-- Workarounds and fix versions
-- Bug list updates on its own
+- Search by name or bug ID
+- Filter by confirmation, resolution, and version
+- Sort by date, priority, votes, comments, and duplicates
+- Workarounds, fix versions, and report links
+- Bug list updates on its own, works offline from cache
 
 ## Bug Database
 Bugpedia uses a separate repository to store its bug list.
@@ -16,7 +17,7 @@ Bugpedia uses a separate repository to store its bug list.
 - [bugpedia-data](https://github.com/frteddz/bugpedia-data)
 
 ## Status
-Work in progress.
+Work in progress. Currently targets 1.21.11 on Fabric.
 
 ## Download
 Modrinth link coming soon.
